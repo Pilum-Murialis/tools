@@ -37,8 +37,18 @@ https://github.com/swisskyrepo/GraphQLmap
 https://github.com/defparam/smuggler
 https://github.com/anshumanpattnaik/http-request-smuggling
 
-# kubernetes
+# cloud
 https://github.com/aquasecurity/kube-hunter
+https://github.com/jordanpotti/AWSBucketDump
+
+# firebase
+https://github.com/shivsahni/FireBaseScanner
+https://github.com/MuhammadKhizerJaved/Insecure-Firebase-Exploit
+
+# 403 forbidden bypass
+https://github.com/lobuhi/byp4xx
+https://github.com/iamj0ker/bypass-403
+https://github.com/gotr00t0day/forbiddenpass
 
 # SQLI
 https://github.com/codingo/NoSQLMap
@@ -70,11 +80,15 @@ https://github.com/brendan-rius/c-jwt-cracker
 # mobile
 https://github.com/nomi9995/react-native-decompiler
 https://github.com/MobSF/Mobile-Security-Framework-MobSF
+https://github.com/0x1CA3/AdbNet
 
 # scanner
 https://nmap.org/
 https://github.com/projectdiscovery/nuclei
 https://github.com/s0md3v/Smap
+https://www.tenable.com/products/nessus
+https://www.zaproxy.org/
+https://www.openvas.org/
 
 # wordlists
 https://github.com/danielmiessler/SecLists
