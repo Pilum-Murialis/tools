@@ -1,0 +1,6 @@
+path traversal
+sqli
+rce
+xxe if svg is accepted
+xxs
+csv

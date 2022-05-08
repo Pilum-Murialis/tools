@@ -1,0 +1,3 @@
+https://github.com/almandin/fuxploider/blob/master/user-agents.txt
+https://github.com/danielmiessler/SecLists/blob/master/Miscellaneous/web/content-type.txt
+http://www.vidyagyaan.com/computer-knowledge/list-of-computer-file-extensions-and-their-meaning/
