@@ -5,18 +5,27 @@ scripts for ctf , bug bounty and stuffs
 # Enumeration tools
 
 https://github.com/hakluke/hakrawler
+
 https://github.com/ffuf/ffuf
+
 https://github.com/projectdiscovery/subfinder
+
 https://github.com/tomnomnom/httprobe
+
 https://github.com/maK-/parameth
+
 https://github.com/s0md3v/Arjun
+
 https://github.com/devanshbatham/ParamSpider
+
 https://github.com/lc/gau
+
 https://github.com/trufflesecurity/trufflehog
 
 # subdomain takeover
 
 https://github.com/m4ll0k/takeover
+
 https://github.com/nahamsec/HostileSubBruteforcer
 
 # CORS
@@ -42,31 +51,39 @@ https://github.com/swisskyrepo/GraphQLmap
 # http smuglling
 
 https://github.com/defparam/smuggler
+
 https://github.com/anshumanpattnaik/http-request-smuggling
 
 # cloud
 
 https://github.com/aquasecurity/kube-hunter
+
 https://github.com/jordanpotti/AWSBucketDump
 
 # firebase
 
 https://github.com/shivsahni/FireBaseScanner
+
 https://github.com/MuhammadKhizerJaved/Insecure-Firebase-Exploit
 
 # 403 forbidden bypass
 
 https://github.com/lobuhi/byp4xx
+
 https://github.com/iamj0ker/bypass-403
+
 https://github.com/gotr00t0day/forbiddenpass
 
 # SQLI
+
 https://github.com/codingo/NoSQLMap
+
 https://github.com/sqlmapproject/sqlmap
 
 # SSRF
 
 https://github.com/swisskyrepo/SSRFmap
+
 https://github.com/teknogeek/ssrf-sheriff
 
 # SSTI
@@ -84,28 +101,38 @@ https://github.com/enjoiz/XXEinjector
 # XSS 
 
 https://github.com/hahwul/dalfox
+
 https://github.com/mandatoryprogrammer/xsshunter
 
 
 # session
 
 https://github.com/Paradoxis/Flask-Unsign
+
 https://github.com/ticarpi/jwt_tool
+
 https://github.com/brendan-rius/c-jwt-cracker
 
 # mobile
 
 https://github.com/nomi9995/react-native-decompiler
+
 https://github.com/MobSF/Mobile-Security-Framework-MobSF
+
 https://github.com/0x1CA3/AdbNet
 
 # scanner
 
 https://nmap.org/
+
 https://github.com/projectdiscovery/nuclei
+
 https://github.com/s0md3v/Smap
+
 https://www.tenable.com/products/nessus
+
 https://www.zaproxy.org/
+
 https://www.openvas.org/
 
 # wordlists
