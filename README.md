@@ -142,3 +142,29 @@ https://github.com/danielmiessler/SecLists
 # gooogle dork
 
 https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan
+
+# LABS
+
+https://app.cyberedu.ro/challenges?sortBy=newest
+
+https://cyberdefenders.org/blueteam-ctf-challenges/
+
+https://hackthebox.eu/
+
+https://tryhackme.com/dashboard
+
+https://play.picoctf.org/practice
+
+https://www.root-me.org/en/Challenges/
+
+https://my.ine.com/CyberSecurity/courses/38316560/web-application-penetration-testing
+
+https://letsdefend.io/
+
+https://securityblue.team/
+
+https://www.bugbountyhunter.com/
+
+https://portswigger.net/web-security/all-labs
+
+https://codered.eccouncil.org/me/enrolled-courses
