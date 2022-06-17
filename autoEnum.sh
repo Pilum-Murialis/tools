@@ -21,7 +21,19 @@ then
     #done <  subfinder_res.txt
 
     #cat curl_res.txt | grep "HTTP" -A 5 >> http_resp_code.txt
-
+    echo -e "do you want to check for CNAME subdomain take over ?"
+    read -p "Input: Y/n " subqinp
+    if [[ $subqinp == "Y" ]]
+    then
+        echo -e "CNAME CHECKER for Subdomain Takeover"
+        cat runningweb.txt | grep SUCCESS | cut -d' ' -f1 | sed 's/^http:\/\///' | sed 's/^https:\/\///' > checkCNAMEsubdomains.txt
+        while IFS= read -r line;
+        do
+            
+            dig CNAME $line +noall +answer >> CNAMEcheck.txt
+            cat CNAMEcheck.txt |  sed 's/.*CNAME//' | sed 's/.$//' > cnamepoints.txt
+        done < checkCNAMEsubdomains.txt
+    fi
 
 
 elif [[ $inp1 == "2" ]];
