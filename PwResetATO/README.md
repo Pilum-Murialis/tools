@@ -25,12 +25,6 @@ Tool usage.
   python3 test.py -vm 'victim@email.com' -tm 'attacker@email.com' -p email -ah 10.0.2.15 -e -u http://10.0.2.2/ResetPassword.php
   
   ```
-## Authors
-
-[anantha](https://github.com/Ananthavijay)
-
-[damaidec](https://medium.com/@damaidec)
-
 
 # Disclaimer
 ```sh
@@ -38,6 +32,12 @@ The tool is for education purpose only. Usage of the tool for attacking the webs
 The end user of the tool will be responsible for the damage it might cause.
 The developer of the tool assume no liability and not responsbile for any misuse and damage.
 ```
+
+## Authors
+
+[anantha](https://github.com/Ananthavijay)
+
+[damaidec](https://medium.com/@damaidec)
 
 #### References
 ```sh
