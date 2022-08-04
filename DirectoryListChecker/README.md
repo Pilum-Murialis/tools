@@ -8,8 +8,6 @@ The Directory Listing Vulnerability might range from low to critical depends on 
   
 ### Usage
 
-Tool usage.
-* 
   ```sh
   chmod +x DirListChecker.sh
   ./DirListChecker.sh
