@@ -2,9 +2,14 @@
 
 ## Mail Poison Remote Code Execution
 ```sh
-This tool is for Local File Inclusion to Remote Code Execution via mail log poisoning. There are some requirements needed inorder to use the tool
+This tool is for Local File Inclusion to Remote Code Execution via mail log poisoning. 
+There are some requirements needed inorder to use the tool
 1. Local File Inclusion
 2. smtp authentication
+
+The tool simply access the SMTP and send a mail with a reverseshell payload.
+next it will setup a netcat listener and sends a get request on the URL 
+thats vulnerable to LFI and access the smtp log to pop the shell
 ```
 
 ### Installation
