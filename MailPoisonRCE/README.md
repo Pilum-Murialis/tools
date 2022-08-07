@@ -1,8 +1,11 @@
 # MailPoisonRCE
 
 ## Mail Poison Remote Code Execution
-
-This tool is for Local File Inclusion to Remote Code Execution via mail log poisoning
+```sh
+This tool is for Local File Inclusion to Remote Code Execution via mail log poisoning. There are some requirements needed inorder to use the tool
+1. Local File Inclusion
+2. smtp authentication
+```
 
 ### Installation
 
