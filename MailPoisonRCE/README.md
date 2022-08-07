@@ -42,6 +42,6 @@ The developer of the tool assume no liability and not responsbile for any misuse
 
 [damaidec](https://medium.com/@damaidec)
 
-[anantha](https://github.com/Ananthavijay)
+[Anantha vijay](https://medium.com/@vj35.cool)
 
 
