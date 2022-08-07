@@ -1,0 +1,7 @@
+pyfiglet
+requests
+argparse
+smtplib
+socket, sys, time
+os
+threading
