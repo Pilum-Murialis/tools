@@ -6,7 +6,7 @@ import threading
 
 url = 'https://url port swig'
 csrf1 = {'csrf':'pKXTOWetBVRLoD73JfRaiutm9sTxiViL'}
-headers = {"Cookie": "session=3ZUOx5rr3CxytTRdrbeJIfGjbNBb7U0U", 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0'}
+headers = {"Cookie": "session=", 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0'}
 
 proxies = {
    'http': 'http://127.0.0.1:8082',
